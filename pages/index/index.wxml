@@ -1,0 +1,9 @@
+<dynasty-poet-box 
+  content="唐" 
+  navigateBaseUrl="/pages/poets/poets">
+</dynasty-poet-box>
+
+<dynasty-poet-box 
+  content="宋" 
+  navigateBaseUrl="/pages/poets/poets">
+</dynasty-poet-box>

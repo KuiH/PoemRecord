@@ -1,0 +1,10 @@
+<!--pages/poems/poems.wxml-->
+<text>pages/poems/poems.wxml</text>
+<view class="container">
+  <view class="title">诗人：{{poetName}}</view>
+  <view class="poems-list">
+    <view class="poem" wx:for="{{poems}}" wx:key="index">
+      {{item}}
+    </view>
+  </view>
+</view>

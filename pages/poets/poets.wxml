@@ -1,0 +1,13 @@
+<!--pages/poets/poets.wxml-->
+<text>pages/poets/poets.wxml</text>
+<view class="container">
+  <view class="title">朝代：{{dynastyName}}</view>
+  <view class="poets-list">
+    <dynasty-poet-box 
+      wx:for="{{poets}}" 
+      wx:key="index" 
+      content="{{item}}" 
+      navigateBaseUrl="/pages/poems/poems">
+    </dynasty-poet-box>
+  </view>
+</view>
