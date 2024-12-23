@@ -1,4 +1,4 @@
 <!--components/dynasty-poet-box/dynasty-poet-box.wxml-->
 <view class="dynasty-poet-box" bindtap="onTap">
-  <text class="name">{{content}}</text>
+  <text class="content">{{content}}</text>
 </view>

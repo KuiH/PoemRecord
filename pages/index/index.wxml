@@ -1,9 +1,9 @@
-<dynasty-poet-box 
-  content="唐" 
-  navigateBaseUrl="/pages/poets/poets">
-</dynasty-poet-box>
-
-<dynasty-poet-box 
-  content="宋" 
-  navigateBaseUrl="/pages/poets/poets">
-</dynasty-poet-box>
+<scroll-view class="container" scroll-y>
+  <!-- 每两个朝代用一个 dynasty-row 套住 -->
+  <view class="dynasty-row" wx:for="{{dynasties}}" wx:for-index="index" wx:key="index" wx:if="{{index % 2 === 0}}">
+    <dynasty-poet-box content="{{dynasties[index]}}" navigateBaseUrl="/pages/poets/poets">
+    </dynasty-poet-box>
+    <dynasty-poet-box wx:if="{{index + 1 < dynasties.length}}" content="{{dynasties[index + 1]}}" navigateBaseUrl="/pages/poets/poets">
+    </dynasty-poet-box>
+  </view>
+</scroll-view>

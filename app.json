@@ -7,7 +7,7 @@
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "Weixin",
-    "navigationBarBackgroundColor": "#e3b373"
+    "navigationBarBackgroundColor": "#c27e4e"
   },
   "style": "v2",
   "componentFramework": "glass-easel",
