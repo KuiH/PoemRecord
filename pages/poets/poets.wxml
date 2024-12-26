@@ -1,5 +1,4 @@
 <!--pages/poets/poets.wxml-->
-<text>pages/poets/poets.wxml</text>
 <view class="container">
   <view class="title">朝代：{{dynastyName}}</view>
   <view class="poets-list">
@@ -7,7 +6,7 @@
       wx:for="{{poets}}" 
       wx:key="index" 
       content="{{item}}" 
-      navigateBaseUrl="/pages/poems/poems">
+      bind:tapbox="onPoetTap">
     </dynasty-poet-box>
   </view>
 </view>

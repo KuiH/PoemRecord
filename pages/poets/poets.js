@@ -1,35 +1,29 @@
+const globalData = require('../../global.js');
+
 Page({
   data: {
-    poets: [],
-    dynastyName: ''
+    poets: [], // 用于存储诗人名称
+    dynastyName: '' // 用于存储朝代名称
   },
 
   onLoad(options) {
-    const name = options.content; // 从参数中获取朝代名称
+    // 从参数中获取朝代名称
+    const dynastyName = options.dynasty;
     this.setData({
-      dynastyName: name
+      dynastyName: dynastyName
     });
 
-    // 根据传入的朝代名称动态获取诗人数据
-    this.fetchPoets(name);
-  },
-
-  fetchPoets(name) {
-    // 模拟根据朝代获取诗人数据
-    let poets = [];
-    switch (name) {
-      case '唐':
-        poets = ['李白', '杜甫', '白居易'];
-        break;
-      case '宋':
-        poets = ['苏轼', '辛弃疾', '李清照'];
-        break;
-      default:
-        poets = ['未知朝代'];
-    }
-
+    // 根据朝代名称获取诗人数据
+    const poets = Object.keys(globalData.poems[dynastyName]);
     this.setData({
       poets: poets
+    });
+  },
+
+  onPoetTap(event) {
+    const poet = event.detail.content;
+    wx.navigateTo({
+      url: `/pages/poems/poems?dynasty=${this.data.dynastyName}&poet=${poet}`
     });
   }
 });

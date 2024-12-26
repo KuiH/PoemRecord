@@ -8,18 +8,7 @@ Component({
     content: {
       type: String,
       value: ''
-    },
-    navigateBaseUrl: {
-      type: String,
-      value: ''
     }
-  },
-
-  /**
-   * 组件的初始数据
-   */
-  data: {
-
   },
 
   /**
@@ -27,9 +16,7 @@ Component({
    */
   methods: {
     onTap() {
-      wx.navigateTo({
-        url: `${this.properties.navigateBaseUrl}?content=${this.properties.content}`
-      });
+      this.triggerEvent('tapbox', { content: this.properties.content });
     }
   }
 })
