@@ -1,10 +1,9 @@
+<view class="title">{{poetName}}</view>
 
 <view class="container">
-  <view>诗人：{{poetName}}</view>
   <view class="poems-list">
     <view class="poem" wx:for="{{poems}}" wx:for-item="poem" wx:key="index">
-      <view>{{poem.title}}</view>
-      <view>{{poem.content}}</view>
+      <poem-box title="{{ poem.title }}"></poem-box>
     </view>
   </view>
 </view>

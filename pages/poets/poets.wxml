@@ -1,12 +1,11 @@
 <!--pages/poets/poets.wxml-->
-<view class="container">
-  <view class="title">朝代：{{dynastyName}}</view>
-  <view class="poets-list">
-    <dynasty-poet-box 
-      wx:for="{{poets}}" 
-      wx:key="index" 
-      content="{{item}}" 
-      bind:tapbox="onPoetTap">
+<view class="title">{{dynastyName}}</view>
+
+<scroll-view class="container" scroll-y enable-flex>
+  <view class="poet-row" wx:for="{{poets}}" wx:for-index="index" wx:key="index" wx:if="{{index % 2 === 0}}">
+    <dynasty-poet-box content="{{poets[index]}}" bind:tapbox="onPoetTap">
+    </dynasty-poet-box>
+    <dynasty-poet-box wx:if="{{index + 1 < poets.length}}" content="{{poets[index + 1]}}" bind:tapbox="onPoetTap">
     </dynasty-poet-box>
   </view>
-</view>
+</scroll-view>

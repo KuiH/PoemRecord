@@ -14,6 +14,7 @@
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents",
   "usingComponents": {
-    "dynasty-poet-box":"./components/dynasty-poet-box/dynasty-poet-box"
+    "dynasty-poet-box":"./components/dynasty-poet-box/dynasty-poet-box",
+    "poem-box":"./components/poem-box/poem-box"
   }
 }
