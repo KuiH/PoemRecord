@@ -3,7 +3,14 @@
 <view class="container">
   <view class="poems-list">
     <view class="poem" wx:for="{{poems}}" wx:for-item="poem" wx:key="index">
-      <poem-box title="{{ poem.title }}"></poem-box>
+      <poem-box 
+        title="{{ poem.title }}" 
+        dynasty="{{ dynastyName }}" 
+        poet="{{ poetName }}" 
+        content="{{ poem.content }}"
+        isPoem="{{ poem.is_poem }}"
+        bind:tappoembox="onPoemTap">
+      </poem-box>
     </view>
   </view>
 </view>

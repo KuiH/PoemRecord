@@ -1,4 +1,4 @@
 
-<view class="poem-box">
+<view class="poem-box" bind:tap="onTap">
   <text class="title">{{title}}</text>
 </view>

@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/poets/poets",
-    "pages/poems/poems"
+    "pages/poems/poems",
+    "pages/recite/recite"
   ],
   "window": {
     "navigationBarTextStyle": "black",

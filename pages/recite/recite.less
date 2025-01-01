@@ -1,0 +1,56 @@
+@poem-box-height: 55vh; // 矩形框的高度
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx;
+}
+
+.poem-box {
+  width: 100%;
+  height: @poem-box-height;
+  background-color: rgba(255, 255, 255, 0.8); // 白色半透明
+  border-radius: 15rpx; // 圆角
+  padding: 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center; // 标题和诗人信息居中
+  gap: 20rpx;
+  margin-top: 0; // 靠屏幕上边缘
+}
+
+.poem-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  text-align: center;
+}
+
+.poem-info {
+  font-size: 30rpx;
+  text-align: center;
+  color: #666;
+}
+
+.poem-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+  overflow-y: auto; // 内容过多时支持滚动
+  width: 100%; // 宽度为 100%
+}
+
+.poem-line {
+  font-size: 32rpx;
+  line-height: 1.6;
+}
+
+.center {
+  text-align: center; // 居中
+}
+
+.left {
+  text-align: left; // 左对齐
+  text-indent: 2em; // 每行开头空两格
+}

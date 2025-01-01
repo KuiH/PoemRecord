@@ -1,0 +1,11 @@
+<view class="container">
+  <view class="poem-box">
+    <view class="poem-title">{{title}}</view>
+    <view class="poem-info">[{{dynasty}}] {{poet}}</view>
+    <view class="poem-content">
+      <block wx:for="{{content}}" wx:key="index">
+        <view class="poem-line {{isPoem ? 'center' : 'left'}}">{{item}}</view>
+      </block>
+    </view>
+  </view>
+</view>
