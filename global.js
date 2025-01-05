@@ -1,6 +1,7 @@
 // global.js
 const globalData = {
-  poems: null // 初始化为 null
+  poems: null, // 初始化为 null
+  defaultPoemsPath: null
 };
 
 // 模拟加载数据
@@ -54,7 +55,11 @@ const loadData = () => {
     未来5: {
       未来诗人: [{ title: "TITLEY", content: ["wwww,wwww。", "wwwww啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊问问啊啊啊啊啊", "wwwww。"], is_poem: true }]
     },
+    未来6: {
+      未来诗人: [{ title: "TITLEY", content: ["wwww,wwww。", "wwwww啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊问问啊啊啊啊啊", "wwwww。"], is_poem: true }]
+    },
   };
+  globalData.defaultPoemsPath = `${wx.env.USER_DATA_PATH}/poems.json`;
 };
 
 // 初始化加载数据
