@@ -12,6 +12,6 @@
   <view class="button-container">
     <view class="button" bindtap="onAddTap">添加</view>
     <view class="button" bindtap="onImportTap">导入</view>
-    <view class="button" bindtap="onExportTap">保存</view>
+    <view class="button" bindtap="onSaveTap">保存</view>
   </view>
 </view>

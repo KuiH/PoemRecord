@@ -1,4 +1,5 @@
 const globalData = require('../../global.js');
+const { savePoem } = require('../../utils/util');
 
 Page({
   data: {
@@ -7,6 +8,7 @@ Page({
 
   onLoad() {
     // 从全局数据中提取朝代名称
+    // console.log(globalData.poems)
     const dynasties = Object.keys(globalData.poems);
     this.setData({
       dynasties: dynasties
@@ -76,28 +78,8 @@ Page({
   },
 
 
-  onExportTap() {
-    const fs = wx.getFileSystemManager();
-    const filePath = globalData.defaultPoemsPath;
-    const dataStr = JSON.stringify(globalData.poems, null, 2); // 将全局诗词数据转换为 JSON 字符串
-
-    fs.writeFile({
-      filePath: filePath,
-      data: dataStr,
-      encoding: 'utf8',
-      success: (res) => {
-        // 提示保存成功
-        wx.showToast({
-          title: '保存成功',
-          duration: 1500
-        });
-      },
-      fail: (err) => {
-        wx.showToast({
-          title: '保存失败',
-          duration: 1500
-        });
-      }
-    });
+  onSaveTap() {
+    const { poems, defaultPoemsPath } = globalData;
+    savePoem(poems, defaultPoemsPath);
   }
 });
