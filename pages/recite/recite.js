@@ -14,7 +14,7 @@ Page({
 
     // 监听 sendData 事件，接收数据
     eventChannel.on('sendPoemData', (data) => {
-      console.log(data);
+      // console.log(data);
       this.setData({
         dynasty: data.dynasty,
         poet: data.poet,

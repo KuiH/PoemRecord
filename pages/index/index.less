@@ -50,3 +50,103 @@
 .button:active {
   opacity: 0.7; /* 点击时按钮变淡 */
 }
+
+/* 蒙版弹窗样式 */
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .button-container {
+    margin-top: 40rpx;
+  }
+
+  .input-box {
+    width: 100%;
+    height: 500rpx;
+    border: 4rpx solid #ccc;
+    border-radius: 10rpx;
+    padding: 10rpx;
+    box-sizing: border-box;
+    margin-bottom: 20rpx;
+    font-size: 30rpx;
+  }
+}
+
+.modal {
+  width: 80%;
+  background-color: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+
+.modal-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.radio-group {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20rpx;
+
+  label {
+    margin: 0 30rpx; /* 增加 label 之间的间隔 */
+  }
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between; /* 解析按钮和返回按钮并排显示 */
+  margin-top: 20rpx;
+}
+
+.mask-button {
+  flex: 1; /* 按钮均匀分布 */
+  background-color: @theme-color;
+  color: white;
+  font-size: 32rpx;
+  border-radius: 10rpx;
+  margin: 0 10rpx; /* 按钮之间的间距 */
+  line-height: 2.5;
+  text-align: center;
+}
+
+.parsed-content {
+  margin-top: 20rpx;
+}
+
+.parsed-item {
+  margin-bottom: 20rpx;
+  font-size: 30rpx;
+
+  .parsed-label {
+    font-size: 32rpx;
+    font-weight: bold;
+  }
+
+  .parsed-input,
+  .parsed-textarea {
+    width: 100%;
+    height: 80rpx; /* 调整输入框高度 */
+    border: 1px solid #ccc;
+    border-radius: 10rpx;
+    padding-left: 10rpx;
+    box-sizing: border-box;
+    margin-top: 10rpx;
+    line-height: 1.5; /* 设置行高 */
+  }
+
+  .parsed-textarea {
+    height: 350rpx;
+  }
+}

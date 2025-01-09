@@ -14,4 +14,59 @@
     <view class="button" bindtap="onImportTap">导入</view>
     <view class="button" bindtap="onSaveTap">保存</view>
   </view>
+
+  <!-- 蒙版弹窗 -->
+  <view class="mask" wx:if="{{showModal}}" bindtap="onCloseModal">
+    <view class="modal" catchtap="stopPropagation">
+      <view class="modal-title">添加诗词</view>
+
+      <!-- 原始输入框和解析按钮 -->
+      <view wx:if="{{!parsedContent}}">
+        <textarea
+          class="input-box"
+          placeholder="请输入诗词内容"
+          value="{{inputContent}}"
+          bindinput="onInputChange"
+        ></textarea>
+        <view class="button-container">
+          <view class="mask-button" bindtap="onParseTap">解析</view>
+          <view class="mask-button" bindtap="onBackTap">返回</view>
+        </view>
+      </view>
+
+      <!-- 解析后的内容展示 -->
+      <view class="parsed-content" wx:if="{{parsedContent}}">
+        <view class="parsed-item">
+          <text class="parsed-label">标题：</text>
+          <input class="parsed-input" value="{{parsedContent.title}}" bindinput="onTitleChange" />
+        </view>
+        <view class="parsed-item">
+          <text class="parsed-label">朝代：</text>
+          <input class="parsed-input" value="{{parsedContent.dynasty}}" bindinput="onDynastyChange" />
+        </view>
+        <view class="parsed-item">
+          <text class="parsed-label">诗人：</text>
+          <input class="parsed-input" value="{{parsedContent.poet}}" bindinput="onPoetChange" />
+        </view>
+        <view class="parsed-item">
+          <text class="parsed-label">内容：</text>
+          <textarea class="parsed-textarea" value="{{parsedContent.content}}" bindinput="onContentChange" />
+        </view>
+        <view class="radio-group">
+          <radio-group bindchange="onRadioChange">
+            <label>
+              <radio value="true" checked="{{isPoem}}" /> 诗
+            </label>
+            <label>
+              <radio value="false" checked="{{!isPoem}}" /> 词
+            </label>
+          </radio-group>
+        </view>
+        <view class="button-container">
+          <view class="mask-button" bindtap="onConfirmTap">确定添加</view>
+          <view class="mask-button" bindtap="backToTextarea">返回</view>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>

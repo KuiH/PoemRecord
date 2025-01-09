@@ -6,7 +6,6 @@ const globalData = {
 
 const defaultPoemsData = {
   唐: {},
-  宋: {},
 };
 
 // 模拟加载数据

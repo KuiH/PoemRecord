@@ -23,11 +23,6 @@ const savePoem = (poems, savePath) => {
     data: dataStr,
     encoding: 'utf8',
     success: (res) => {
-      // 提示保存成功
-      wx.showToast({
-        title: '保存成功',
-        duration: 1500
-      });
     },
     fail: (err) => {
       wx.showToast({
