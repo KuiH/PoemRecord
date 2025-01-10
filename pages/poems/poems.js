@@ -27,7 +27,7 @@ Page({
   onPoemTap(event) {
     // 获取点击的古诗数据
     const { dynasty, poet, content, title, isPoem } = event.detail;
-    
+
     // 跳转到 recite 页面，并通过 EventChannel 传递数据
     wx.navigateTo({
       url: '/pages/recite/recite',
@@ -41,6 +41,6 @@ Page({
         });
       }
     });
+  },
 
-  }
 });

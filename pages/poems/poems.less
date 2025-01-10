@@ -1,4 +1,7 @@
 /* pages/poems/poems.wxss */
+@poem-box-height: 120rpx;
+@actions-width: 30%;
+
 .title {
   text-align: center; /* 文字居中 */
   font-size: 60rpx; /* 字体大小 */
@@ -16,6 +19,43 @@
   gap: 20rpx; /* poem-box 之间的间距 */
 }
 
-.poem {
-  width: 100%; /* 宽度为父元素的 100% */
+/* 滑动区域样式 */
+.movable-area {
+  width: 100%;
+  height: @poem-box-height; /* 与 poem-box 高度一致 */
+  overflow: hidden;
 }
+
+.movable-view {
+  display: flex;
+  width: calc(100% + @actions-width); /* 内容区域 + 操作区域 */
+  height: 100%;
+}
+
+.content {
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  width: @actions-width;
+
+  .edit {
+    background-color: #62af65a8; /* 编辑按钮背景色 */
+  }
+  
+  .delete {
+    background-color: #f75d52b2; /* 删除按钮背景色 */
+  }
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+  color: white;
+  font-size: 32rpx;
+}
+

@@ -3,14 +3,34 @@
 <view class="container">
   <view class="poems-list">
     <view class="poem" wx:for="{{poems}}" wx:for-item="poem" wx:key="index">
-      <poem-box 
-        title="{{ poem.title }}" 
-        dynasty="{{ dynastyName }}" 
-        poet="{{ poetName }}" 
-        content="{{ poem.content }}"
-        isPoem="{{ poem.is_poem }}"
-        bind:tappoembox="onPoemTap">
-      </poem-box>
+      <!-- 滑动区域 -->
+      <movable-area class="movable-area">
+        <movable-view
+          class="movable-view"
+          direction="horizontal"
+          damping="20"
+          friction="5"
+          data-index="{{index}}"
+        >
+          <!-- 内容区域 -->
+          <view class="content">
+            <poem-box 
+              title="{{ poem.title }}" 
+              dynasty="{{ dynastyName }}" 
+              poet="{{ poetName }}" 
+              content="{{ poem.content }}"
+              isPoem="{{ poem.is_poem }}"
+              bind:tappoembox="onPoemTap">
+            </poem-box>
+          </view>
+
+          <!-- 操作区域 -->
+          <view class="actions">
+            <view class="action edit" bindtap="onEditTap" data-index="{{index}}">编辑</view>
+            <view class="action delete" bindtap="onDeleteTap" data-index="{{index}}">删除</view>
+          </view>
+        </movable-view>
+      </movable-area>
     </view>
   </view>
 </view>
