@@ -5,23 +5,10 @@
     <view class="poem" wx:for="{{poems}}" wx:for-item="poem" wx:key="index">
       <!-- 滑动区域 -->
       <movable-area class="movable-area">
-        <movable-view
-          class="movable-view"
-          direction="horizontal"
-          damping="100"
-          friction="100"
-          data-index="{{index}}"
-          x="{{offset}}"
-        >
+        <movable-view class="movable-view" direction="horizontal" damping="100" friction="100" data-index="{{index}}" x="{{offset}}">
           <!-- 内容区域 -->
           <view class="content">
-            <poem-box 
-              title="{{ poem.title }}" 
-              dynasty="{{ dynastyName }}" 
-              poet="{{ poetName }}" 
-              content="{{ poem.content }}"
-              isPoem="{{ poem.is_poem }}"
-              bind:tappoembox="onPoemTap">
+            <poem-box title="{{ poem.title }}" dynasty="{{ dynastyName }}" poet="{{ poetName }}" content="{{ poem.content }}" isPoem="{{ poem.is_poem }}" bind:tappoembox="onPoemTap">
             </poem-box>
           </view>
 
@@ -33,5 +20,50 @@
         </movable-view>
       </movable-area>
     </view>
+  </view>
+</view>
+
+<!-- 编辑弹窗 -->
+<view class="mask" wx:if="{{showEditModal}}" bindtap="onCloseModal">
+  <view class="modal" catchtap="stopPropagation">
+    <view class="modal-title">编辑诗词</view>
+
+    <!-- 标题 -->
+    <view class="input-item">
+      <text class="label">标题：</text>
+      <input class="input" value="{{editData.title}}" bindinput="onEditTitleChange" />
+    </view>
+
+    <!-- 朝代 -->
+    <view class="input-item">
+      <text class="label">朝代：</text>
+      <input class="input" value="{{editData.dynasty}}" bindinput="onEditDynastyChange" />
+    </view>
+
+    <!-- 诗人 -->
+    <view class="input-item">
+      <text class="label">诗人：</text>
+      <input class="input" value="{{editData.poet}}" bindinput="onEditPoetChange" />
+    </view>
+
+    <!-- 内容 -->
+    <view class="input-item">
+      <text class="label">内容：</text>
+      <textarea class="textarea" value="{{editData.content}}" bindinput="onEditContentChange" />
+    </view>
+
+    <view class="radio-group">
+      <radio-group bindchange="onEditRadioChange">
+        <label>
+          <radio value="true" checked="{{editData.isPoem}}" /> 诗
+        </label>
+        <label>
+          <radio value="false" checked="{{!editData.isPoem}}" /> 词
+        </label>
+      </radio-group>
+    </view>
+
+    <!-- 确定按钮 -->
+    <view class="confirm-button" bindtap="onEditConfirm">确定</view>
   </view>
 </view>
