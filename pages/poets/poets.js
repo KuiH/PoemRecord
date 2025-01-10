@@ -7,14 +7,16 @@ Page({
   },
 
   onLoad(options) {
-    // 从参数中获取朝代名称
     const dynastyName = options.dynasty;
+    const poets = Object.keys(globalData.poems[dynastyName]);
     this.setData({
+      poets: poets,
       dynastyName: dynastyName
     });
+  },
 
-    // 根据朝代名称获取诗人数据
-    const poets = Object.keys(globalData.poems[dynastyName]);
+  onShow(){
+    const poets = Object.keys(globalData.poems[this.data.dynastyName]);
     this.setData({
       poets: poets
     });

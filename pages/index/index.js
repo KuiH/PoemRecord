@@ -10,9 +10,16 @@ Page({
     parsedContent: null // 解析后的内容
   },
 
+  
   onLoad() {
     // 从全局数据中提取朝代名称
-    // console.log(globalData.poems)
+    const dynasties = Object.keys(globalData.poems);
+    this.setData({
+      dynasties: dynasties
+    });
+  },
+
+  onShow(){
     const dynasties = Object.keys(globalData.poems);
     this.setData({
       dynasties: dynasties

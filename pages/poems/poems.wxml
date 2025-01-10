@@ -8,9 +8,10 @@
         <movable-view
           class="movable-view"
           direction="horizontal"
-          damping="20"
-          friction="5"
+          damping="100"
+          friction="100"
           data-index="{{index}}"
+          x="{{offset}}"
         >
           <!-- 内容区域 -->
           <view class="content">
