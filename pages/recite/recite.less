@@ -1,4 +1,5 @@
 @poem-box-height: 55vh; // 矩形框的高度
+@theme-color: #a9b372;
 
 .container {
   display: flex;
@@ -53,4 +54,34 @@
 .left {
   text-align: left; // 左对齐
   text-indent: 2em; // 每行开头空两格
+}
+
+/* 按钮区域样式 */
+.button-container {
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // gap: 20rpx;
+  .button {
+    width: 180rpx;
+    background-color: @theme-color; // 按钮背景色
+    color: white;
+    font-size: 32rpx;
+    border-radius: 10rpx;
+    padding: 20rpx 40rpx;
+    text-align: center;
+  }
+}
+
+.recite-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 80rpx;
 }
