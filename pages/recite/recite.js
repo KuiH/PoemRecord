@@ -9,7 +9,8 @@ Page({
     originalContent: [], // 原始内容
     currentContent: [""], // 当前显示的内容
     nextWordInCurPara: 0, // 背诵模式时，记录当前段落展示的下一个字的下标
-    punctuations: ['。', '，', ',', '.', '、', '；', '：', '！', '？']
+    punctuations: ['。', '，', ',', '.', '、', '；', '：', '！', '？', ';', '!', '?'],
+    nonPoemPunctuations: ['。', '.', '、', '；', '：', '！', '？', ';', '!', '?']
   },
 
   onLoad() {
@@ -55,9 +56,9 @@ Page({
       nextWordInCurPara = 1;
     }
     else {
-      let addWords = originalContent[curParaIndex][nextWordInCurPara]; 
+      let addWords = originalContent[curParaIndex][nextWordInCurPara];
       nextWordInCurPara++;
-      if(this.data.punctuations.includes(originalContent[curParaIndex][nextWordInCurPara])){ //跳过标点
+      if (this.data.punctuations.includes(originalContent[curParaIndex][nextWordInCurPara])) { //跳过标点
         addWords += originalContent[curParaIndex][nextWordInCurPara];
         nextWordInCurPara++;
       }
@@ -70,8 +71,45 @@ Page({
     });
   },
 
+  _nextSentenceEnd(para, begin, punctuations){
+    let sentenceEndIndex = -1;
+    for (let i = begin; i < para.length; i++) {
+      if (punctuations.includes(para[i])) {
+        sentenceEndIndex = i;
+        break;
+      }
+    }
+    return sentenceEndIndex;
+  },
+
   // 显示一句话
   showOneSentence() {
+    if (this._isPoemFinish()) {
+      return;
+    }
+
+    let { originalContent, currentContent, nextWordInCurPara } = this.data;
+    const curParaIndex = currentContent.length - 1;
+    const targetPunctuations = (this.data.isPoem ? this.data.punctuations : this.data.nonPoemPunctuations);
+    console.log(targetPunctuations);
+
+    if (originalContent[curParaIndex].length <= nextWordInCurPara) { // 一段完成
+      const sentenceEndIndex = this._nextSentenceEnd(originalContent[curParaIndex + 1], 0, targetPunctuations);
+      nextWordInCurPara = sentenceEndIndex+1;
+      currentContent.push(originalContent[curParaIndex + 1].slice(0, nextWordInCurPara)); // 添加新段落
+    }
+    else { // 从 nextWordInCurPara 开始查找第一个出现在 targetPunctuations 中的字符
+      const currentParagraph = originalContent[curParaIndex];
+      const sentenceEndIndex = this._nextSentenceEnd(currentParagraph, nextWordInCurPara, targetPunctuations);
+      const sentence = currentParagraph.substring(nextWordInCurPara, sentenceEndIndex + 1);
+      nextWordInCurPara = sentenceEndIndex + 1;
+      currentContent[curParaIndex] += sentence;
+    }
+
+    this.setData({
+      currentContent: currentContent,
+      nextWordInCurPara: nextWordInCurPara
+    });
 
   },
 
@@ -84,7 +122,8 @@ Page({
   endRecite() {
     this.setData({
       isReciting: false,
-      currentContent: this.data.originalContent
+      currentContent: this.data.originalContent,
+      nextWordInCurPara: 0
     });
   }
 });
