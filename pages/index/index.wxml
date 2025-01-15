@@ -27,6 +27,7 @@
           placeholder="请输入诗词内容"
           value="{{inputContent}}"
           bindinput="onInputChange"
+          maxlength="-1"
         ></textarea>
         <view class="button-container">
           <view class="mask-button" bindtap="onParseTap">解析</view>
@@ -50,7 +51,7 @@
         </view>
         <view class="parsed-item">
           <text class="parsed-label">内容：</text>
-          <textarea class="parsed-textarea" value="{{parsedContent.content}}" bindinput="onContentChange" />
+          <textarea class="parsed-textarea" maxlength="-1" value="{{parsedContent.content}}" bindinput="onContentChange" />
         </view>
         <view class="radio-group">
           <radio-group bindchange="onRadioChange">
