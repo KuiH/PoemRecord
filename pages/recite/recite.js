@@ -91,7 +91,6 @@ Page({
     let { originalContent, currentContent, nextWordInCurPara } = this.data;
     const curParaIndex = currentContent.length - 1;
     const targetPunctuations = (this.data.isPoem ? this.data.punctuations : this.data.nonPoemPunctuations);
-    console.log(targetPunctuations);
 
     if (originalContent[curParaIndex].length <= nextWordInCurPara) { // 一段完成
       const sentenceEndIndex = this._nextSentenceEnd(originalContent[curParaIndex + 1], 0, targetPunctuations);
@@ -115,7 +114,27 @@ Page({
 
   // 显示一片段
   showOneFragment() {
+    if (this._isPoemFinish()) {
+      return;
+    }
 
+    let { originalContent, currentContent, nextWordInCurPara } = this.data;
+    const curParaIndex = currentContent.length - 1;
+
+    if (originalContent[curParaIndex].length <= nextWordInCurPara) { // 一段完成
+      currentContent.push(originalContent[curParaIndex + 1]);
+      nextWordInCurPara = originalContent[curParaIndex + 1].length;
+    }
+    else {
+      const currentParagraph = originalContent[curParaIndex];
+      currentContent[currentContent.length - 1] = currentParagraph;
+      nextWordInCurPara = currentParagraph.length;
+    }
+
+    this.setData({
+      currentContent: currentContent,
+      nextWordInCurPara: nextWordInCurPara
+    });
   },
 
   // 结束背诵
