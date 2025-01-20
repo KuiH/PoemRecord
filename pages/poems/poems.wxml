@@ -49,7 +49,7 @@
     <!-- 内容 -->
     <view class="input-item">
       <text class="label">内容：</text>
-      <textarea class="textarea" value="{{editData.content}}" bindinput="onEditContentChange" />
+      <textarea class="textarea" maxlength="-1" value="{{editData.content}}" bindinput="onEditContentChange" />
     </view>
 
     <view class="radio-group">
